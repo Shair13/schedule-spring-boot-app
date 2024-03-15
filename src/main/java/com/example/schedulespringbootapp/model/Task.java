@@ -34,6 +34,7 @@ public class Task {
     @Setter(AccessLevel.PACKAGE)
     private TaskGroup group;
 
+
     public void updateFrom(final Task source) {
         description = source.description;
         done = source.done;

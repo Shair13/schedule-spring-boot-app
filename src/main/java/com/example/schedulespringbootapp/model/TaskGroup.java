@@ -27,4 +27,9 @@ public class TaskGroup {
     @Setter(value = AccessLevel.PACKAGE)
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "group")
     Set<Task> tasks;
+    @ManyToOne
+    @JoinColumn(name = "project_id")
+    @Getter(AccessLevel.PACKAGE)
+    @Setter(AccessLevel.PACKAGE)
+    private Project project;
 }
