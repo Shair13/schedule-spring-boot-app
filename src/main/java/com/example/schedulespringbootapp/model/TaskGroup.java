@@ -19,12 +19,11 @@ import java.util.Set;
 public class TaskGroup {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Setter(value = AccessLevel.NONE)
+    @Setter(value = AccessLevel.PACKAGE)
     private int id;
     @NotBlank(message = "Task group's description cannot be empty")
     private String description;
     private boolean done;
-    @Setter(value = AccessLevel.PACKAGE)
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "group")
     Set<Task> tasks;
     @ManyToOne
