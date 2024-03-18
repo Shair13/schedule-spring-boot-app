@@ -34,6 +34,10 @@ public class Task {
     @Setter(AccessLevel.PACKAGE)
     private TaskGroup group;
 
+    public Task(String description, LocalDateTime deadline){
+        this.description = description;
+        this.deadline = deadline;
+    }
 
     public void updateFrom(final Task source) {
         description = source.description;
