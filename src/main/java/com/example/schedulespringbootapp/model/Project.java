@@ -24,7 +24,6 @@ public class Project {
     @OneToMany(mappedBy = "project")
     Set<TaskGroup> groups;
     @Setter(value = AccessLevel.PACKAGE)
-    @Getter(value = AccessLevel.PACKAGE)
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "project")
     Set<ProjectStep> steps;
 
