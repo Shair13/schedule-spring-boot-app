@@ -31,7 +31,7 @@ public class ProjectService {
     }
 
     public GroupReadModel createGroup(LocalDateTime deadline, int projectId) {
-        if (config.getTemplate().isAllowMultipleTasks() && taskGroupRepository.existsByDoneIsFalseAndProject_Id(projectId)) {
+        if (!config.getTemplate().isAllowMultipleTasks() && taskGroupRepository.existsByDoneIsFalseAndProject_Id(projectId)) {
             throw new IllegalStateException("Only one undone group from project is allowed");
         }
         TaskGroup taskGroupResult = projectRepository.findById(projectId)
@@ -44,7 +44,8 @@ public class ProjectService {
                                             step.getDescription(),
                                             deadline.plusDays(step.getDaysToDeadline())
                                     )).collect(Collectors.toSet()));
-                    return result;
+                    result.setProject(project);
+                    return taskGroupRepository.save(result);
                 }).orElseThrow(() -> new IllegalArgumentException("Project with given id not found"));
 
         return new GroupReadModel(taskGroupResult);

@@ -28,7 +28,5 @@ public class TaskGroup {
     Set<Task> tasks;
     @ManyToOne
     @JoinColumn(name = "project_id")
-    @Getter(AccessLevel.PACKAGE)
-    @Setter(AccessLevel.PACKAGE)
     private Project project;
 }

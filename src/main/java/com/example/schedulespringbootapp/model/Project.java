@@ -4,12 +4,14 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Set;
 
 @Entity
 @Table(name = "projects")
+@NoArgsConstructor
 @Getter
 @Setter(value = AccessLevel.PACKAGE)
 public class Project {
