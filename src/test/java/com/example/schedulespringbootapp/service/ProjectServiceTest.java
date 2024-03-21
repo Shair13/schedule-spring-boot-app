@@ -103,14 +103,13 @@ class ProjectServiceTest {
         var toTest = new ProjectService(mockProjectRepository, inMemoryGroupRepo, mockConfig);
 
         //when
-        GroupReadModel result = toTest.createGroup(today, 1);
+        GroupReadModel result = toTest.createGroup(today, 123);
 
         //then
         assertThat(result.getDescription()).isEqualTo("bar");
         assertThat(result.getDeadline()).isEqualTo(today.minusDays(1));
         assertThat(result.getTasks()).allMatch(task -> task.getDescription().equals("foo"));
-        assertThat(countBeforeCall + 1)
-                .isEqualTo(inMemoryGroupRepo.count());
+        assertThat(countBeforeCall + 1).isEqualTo(inMemoryGroupRepo.count());
     }
 
     private Project projectWith(String projectDescription, Set<Integer> daysToDeadLine) {
